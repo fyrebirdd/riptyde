@@ -1,0 +1,22 @@
+{
+  "name": "riptyde",
+  "version": "1.0.0",
+  "description": "A 3D Javascript library based on WebGPU",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyrebirdd/riptyde.git"
+  },
+  "keywords": [
+    "riptyde"
+  ],
+  "author": "Fyrebirdd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fyrebirdd/riptyde/issues"
+  },
+  "homepage": "https://github.com/fyrebirdd/riptyde#readme"
+}
