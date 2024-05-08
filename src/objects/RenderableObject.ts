@@ -1,4 +1,4 @@
-import { WebGPU } from "../riptyde";
+import WebGPU from "../WebGPU/WebGPUState";
 import { BaseMaterial } from "./BaseMaterial";
 import { BaseMesh } from "./BaseMesh";
 import { BaseObject } from "./BaseObject"

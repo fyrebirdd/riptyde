@@ -1,5 +1,5 @@
 import { Vertex } from "../loaders/LoadersMain";
-import { WebGPU } from "../riptyde";
+import WebGPU from "../WebGPU/WebGPUState";
 
 class BaseMesh {
 

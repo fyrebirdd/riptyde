@@ -23,6 +23,7 @@
   "homepage": "https://github.com/fyrebirdd/riptyde#readme",
   "dependencies": {
     "@webgpu/types": "^0.1.40",
+    "npm": "^10.7.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "wgpu-matrix": "^2.8.0"

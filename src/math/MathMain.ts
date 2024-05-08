@@ -1,3 +1,3 @@
-import { degToRad } from "wgpu-matrix/dist/2.x/utils";
+import { DegToRad } from "./degToRad.js";
 
-export {degToRad};
+export {DegToRad};
