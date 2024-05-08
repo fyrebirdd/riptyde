@@ -1,15 +1,19 @@
-import { BaseObject } from "../objects/BaseObject";
+import { RenderableObject } from "../objects/RenderableObject";
 
 class Scene{
 
-    private listOfObjects:BaseObject[];
+    private listOfObjects:RenderableObject[];
 
     constructor(){
         this.listOfObjects = [];
     }
 
-    Add(obj:BaseObject){
+    public Add(obj:RenderableObject){
         this.listOfObjects.push(obj)
+    }
+
+    public _getListOfObjects(){
+        return this.listOfObjects;
     }
 }
 
