@@ -1,5 +1,5 @@
 import WebGPU from "../WebGPU/WebGPUState";
-import { BaseMaterial } from "./BaseMaterial";
+import { BaseMaterial } from "./materials/BaseMaterial";
 import { BaseMesh } from "./BaseMesh";
 import { BaseObject } from "./BaseObject"
 
@@ -17,47 +17,13 @@ class RenderableObject extends BaseObject{
     private renderPipelineLayout:GPUPipelineLayoutDescriptor;
 
 
-    constructor(
-        mesh:BaseMesh, 
-        material:BaseMaterial, 
-        primitiveState:GPUPrimitiveState = {
-            topology: 'triangle-list', 
-            cullMode: 'back'
-        },
-        depthStencilState:GPUDepthStencilState = {
-            depthWriteEnabled:true,
-            depthCompare:'less',
-            format:'depth24plus'
-        },
-        renderPipelineLayout:GPUPipelineLayoutDescriptor = {
-            bindGroupLayouts: material._getBindGroupLayouts()
-        },
-        vertexState:GPUVertexState = {
-            module: material._getShaderModule(), 
-            entryPoint: material._getVertexEntryFunctionName(),
-            buffers: [mesh._getVertexBufferLayout()]
-        },
-        fragmentState:GPUFragmentState = {
-            module: material._getShaderModule(),
-            entryPoint: material._getFragmentEntryFunctionName(),
-            targets:[
-                {
-                    format:navigator.gpu.getPreferredCanvasFormat()
-                }
-            ]
-        }
-    ){
+    constructor(mesh:BaseMesh, material:BaseMaterial){
         super();
 
         this.mesh = mesh;
         this.material = material;
 
-        this.primitiveState = primitiveState;
-        this.depthStencilState = depthStencilState;
-        this.vertexState = vertexState;
-        this.fragmentState = fragmentState;
-
-        this.renderPipelineLayout = renderPipelineLayout;
+        
         this.CreateRenderPipeline();
     }
 
