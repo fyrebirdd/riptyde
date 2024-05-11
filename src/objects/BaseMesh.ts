@@ -3,6 +3,8 @@ import WebGPU from "../WebGPU/WebGPUState";
 
 class BaseMesh {
 
+    private label:string;
+
     private vertexArray: Vertex[];
     private mappedVertexArray: number[];
 
@@ -11,7 +13,8 @@ class BaseMesh {
     private vertexBuffer?: GPUBuffer;
     private vertexBufferLayout?: GPUVertexBufferLayout;
 
-    constructor(vertexArray:Vertex[]){
+    constructor(label:string, vertexArray:Vertex[]){
+        this.label = label;
         this.vertexArray = vertexArray;
         this.vertexStrideBytes = vertexArray[0].GetStrideInBytes();
         this.mappedVertexArray = this.vertexArray.flatMap(vertex => vertex.GetAsArray());
