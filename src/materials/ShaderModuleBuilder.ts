@@ -6,6 +6,9 @@ export class ShaderModuleBuilder{
     private cHints: GPUShaderModuleCompilationHint[];
     private sMap?: object;
 
+    private vertexFunction?:string;
+    private fragmentFunction?:string;
+
     constructor(){
         this.code = "";
         this.cHints = [];
@@ -14,6 +17,14 @@ export class ShaderModuleBuilder{
 
     public SetCode(code:string){
         this.code = code;
+    }
+
+    public SetVertexEntryFunction(functionName:string){
+        this.vertexFunction = functionName;
+    }
+
+    public SetFragmentEntryFunction(functionName:string){
+        this.fragmentFunction = functionName;
     }
 
     public SetCompilationHints(){
@@ -26,7 +37,7 @@ export class ShaderModuleBuilder{
 
 
     public Build():Shader{
-        var newShader = new Shader(this.code, this.cHints, this.sMap)
+        var newShader = new Shader(this.code, this.cHints, this.sMap, this.vertexFunction, this.fragmentFunction);
         return newShader;
     }
 }

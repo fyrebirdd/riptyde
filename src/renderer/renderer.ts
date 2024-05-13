@@ -8,6 +8,10 @@ export class WebGPU_Renderer{
 
     }
 
+    private CreateDepthTexture(canvasWidth:number, canvasHeight:number){
+
+    }
+
     public render(scene:Scene, camera:Camera){
         scene._getListOfObjects().forEach((obj) => {
             

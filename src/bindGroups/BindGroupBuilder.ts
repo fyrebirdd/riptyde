@@ -1,4 +1,4 @@
-import WebGPU from "../../WebGPU/WebGPUState";
+import { BindGroup } from "./BindGroup";
 import { iBaseGroupEntry } from "./bindGroupEntries/iBaseEntry";
 
 export class BindGroupBuilder{
@@ -14,8 +14,7 @@ export class BindGroupBuilder{
         this.bindGroupEntries.push(entry)
     }
 
-    public Build(): GPUBindGroup{
-        let device = WebGPU.GetDevice();
+    public Build(): BindGroup{
         let groupList: GPUBindGroupEntry[] = [];
         let layoutList: GPUBindGroupLayoutEntry[] = [];
 
@@ -24,16 +23,7 @@ export class BindGroupBuilder{
             layoutList.push(entry.layoutEntry);
         });
         
-        let layout: GPUBindGroupLayoutDescriptor = {
-            entries: layoutList
-        };
-        
-        let groupDescriptor:GPUBindGroupDescriptor = {
-            layout: device.createBindGroupLayout(layout),
-            entries: groupList
-        };
-
-        let group = device.createBindGroup(groupDescriptor);
+        let group:BindGroup = new BindGroup(layoutList, groupList);
 
         return group;
     }
