@@ -8,9 +8,17 @@
   "scripts": {
     "build": "tsup"
   },
+  "files": [
+    "build",
+    "examples",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "src"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fyrebirdd/riptyde.git"
+    "url": "https://github.com/fyrebirdd/riptyde"
   },
   "keywords": [
     "riptyde"

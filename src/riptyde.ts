@@ -1,5 +1,7 @@
 import WebGPU from "./WebGPU/WebGPUState.js";
 
-export * as Math from "./math/MathMain.js";
-export * as MeshLoaders from "./loaders/LoadersMain.js";
+export * from "./compute/DataInputTypes.js";
+export * from "./compute/ComputeJob.js";
+export * from './compute/ComputeDescriptor.js';
+
 export {WebGPU}
