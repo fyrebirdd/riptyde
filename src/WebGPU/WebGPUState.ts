@@ -1,6 +1,4 @@
 export class WebGPU_State{
-
-    private static instance: WebGPU_State;
     
     private device?:GPUDevice;
 
@@ -10,12 +8,9 @@ export class WebGPU_State{
         this.initialized = false;
     }
 
-    public static getInstance(){
-        if (!WebGPU_State.instance){
-            WebGPU_State.instance = new WebGPU_State();
-        }
-        return WebGPU_State.instance;
-    };
+    public static _getInitialWebGPUStateObject(): WebGPU_State{
+        return new WebGPU_State();
+    }
 
     public getDevice(){
         if (this.initialized == false){
@@ -29,18 +24,24 @@ export class WebGPU_State{
     }
 
     public async Init(){
+        // Checking if WebGPU is available on the current browser
         if (!('gpu' in navigator)){
             console.log("GPU not found, please use a browser that supports WebGPU!")
+            return false;
         }
+        // Getting Adapter
         let adapter = await navigator.gpu.requestAdapter();
         if (adapter == undefined){
             console.log("Unable to get adapter, try restarting your browser!");
             return false;
         }
+        // Getting Device
         this.device = await adapter.requestDevice();
+        // Setting device recovery steps upon loss
         this.device.lost.then((info) => {
             console.error(`WebGPU device was lost: ${info.message}`);
             this.device = undefined;
+            // If the device was not destroyed (happens when closing tab), then reinitalize it.
             if (info.reason != 'destroyed'){
                 this.Init();
             }
@@ -51,5 +52,5 @@ export class WebGPU_State{
     }
 }
 
-const WebGPU = WebGPU_State.getInstance();
+const WebGPU = WebGPU_State._getInitialWebGPUStateObject();
 export default WebGPU;
