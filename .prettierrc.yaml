@@ -1,0 +1,8 @@
+trailingComma: "es5"
+max_line_length: 80
+tabWidth: 4
+useTabs: true
+semi: true
+singleQuote: true
+arrowParens: "always"
+endOfLine: "lf"
